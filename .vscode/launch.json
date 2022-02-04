@@ -1,0 +1,52 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dev app",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define=APP_NAME=Dev app",
+        "--dart-define=APP_SUFFIX=.dev",
+        "--dart-define=SENTRY_DSN=value",
+        "--dart-define=SENTRY_ENVIRONMENT=development"
+      ]
+    },
+    {
+      "name": "Dev app (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": [
+        "--dart-define=APP_NAME=Dev app",
+        "--dart-define=APP_SUFFIX=.dev",
+        "--dart-define=SENTRY_DSN=value",
+        "--dart-define=SENTRY_ENVIRONMENT=development"
+      ]
+    },
+    {
+      "name": "Prod app",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define=APP_NAME=Prod app",
+        "--dart-define=SENTRY_DSN=value",
+        "--dart-define=SENTRY_ENVIRONMENT=production"
+      ]
+    },
+    {
+      "name": "Prod app (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": [
+        "--dart-define=APP_NAME=Prod app",
+        "--dart-define=SENTRY_DSN=value",
+        "--dart-define=SENTRY_ENVIRONMENT=production"
+      ]
+    },
+  ]
+}
