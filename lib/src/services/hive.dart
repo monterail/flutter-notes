@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:template/src/repositories/user_repository/user_repository.dart';
+import 'package:template/src/repositories/notes_repository/notes_repository.dart';
 
 Future<void> setupHive() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,7 +9,7 @@ Future<void> setupHive() async {
 }
 
 void _registerAdapters() {
-  Hive.registerAdapter<User>(UserAdapter());
+  Hive.registerAdapter<Note>(NoteAdapter());
 }
 
 abstract class IHiveRepository<E> {
