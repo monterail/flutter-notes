@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,7 +11,7 @@ class NotesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = AppRouter();
-    return MaterialApp.router(
+    return CupertinoApp.router(
       routerDelegate: router.delegate(),
       routeInformationParser: router.defaultRouteParser(),
       // Providing a restorationScopeId allows the Navigator built by the
@@ -32,6 +33,12 @@ class NotesApp extends StatelessWidget {
         Locale('en', ''), // English, no country code
       ],
 
+      theme: const CupertinoThemeData(
+        primaryColor: Colors.amber,
+        barBackgroundColor: CupertinoColors.extraLightBackgroundGray,
+        scaffoldBackgroundColor: CupertinoColors.extraLightBackgroundGray,
+      ),
+
       // Use AppLocalizations to configure the correct application title
       // depending on the user's locale.
       //
@@ -39,11 +46,6 @@ class NotesApp extends StatelessWidget {
       // directory.
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
-
-      // Define a light and dark color theme. Then, read the user's
-      // preferred ThemeMode (light, dark, or system default) from the
-      // SettingsController to display the correct theme.
-      theme: ThemeData(),
     );
   }
 }
