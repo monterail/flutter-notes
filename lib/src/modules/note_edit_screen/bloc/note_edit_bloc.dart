@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:template/src/repositories/notes_repository/notes_repository.dart';
+import 'package:template/src/services/share.dart';
 import 'package:template/src/utils/bloc/transformers.dart';
 
 part 'note_edit_event.dart';
@@ -10,10 +11,13 @@ part 'note_edit_state.dart';
 
 class NoteEditBloc extends Bloc<NoteEditEvent, NoteEditState> {
   final AbstractNoteRepository _noteRepository;
+  final ShareService _share;
 
   NoteEditBloc({
     required AbstractNoteRepository noteRepository,
+    required ShareService share,
   })  : _noteRepository = noteRepository,
+        _share = share,
         super(const NoteEditState()) {
     on<LoadNote>(_handleLoadNote);
     on<UpdateContent>(_handleUpdateContent);
@@ -26,6 +30,7 @@ class NoteEditBloc extends Bloc<NoteEditEvent, NoteEditState> {
       ),
     );
     on<DeleteNote>(_handleDeleteNote);
+    on<ShareNote>(_handleShareNote);
   }
 
   FutureOr<void> _handleLoadNote(
@@ -66,6 +71,16 @@ class NoteEditBloc extends Bloc<NoteEditEvent, NoteEditState> {
       return;
     }
     await _noteRepository.delete(state.note!.id);
+  }
+
+  FutureOr<void> _handleShareNote(
+    ShareNote event,
+    Emitter<NoteEditState> emit,
+  ) async {
+    if (state.note == null) {
+      return;
+    }
+    await _share.share(state.note!.content);
   }
 
   Future<Note> _buildDefaultNote() async =>

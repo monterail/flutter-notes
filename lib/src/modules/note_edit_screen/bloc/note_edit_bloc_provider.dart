@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/src/repositories/notes_repository/notes_repository.dart';
+import 'package:template/src/services/share.dart';
 
 import 'note_edit_bloc.dart';
 
@@ -19,6 +20,7 @@ class NoteEditBlocProvider extends StatelessWidget {
         child: BlocProvider(
           create: (context) => NoteEditBloc(
             noteRepository: context.read<AbstractNoteRepository>(),
+            share: ShareServiceImpl(),
           ),
           child: child,
         ),

@@ -13,12 +13,12 @@ class NotesListSeachField extends StatelessWidget {
           padding: EdgeInsets.only(left: 6),
           child: Icon(
             CupertinoIcons.search,
-            color: CupertinoColors.tertiaryLabel,
+            color: CupertinoColors.inactiveGray,
           ),
         ),
         placeholder: 'Search',
         placeholderStyle: const TextStyle(
-          color: CupertinoColors.tertiaryLabel,
+          color: CupertinoColors.inactiveGray,
         ),
       );
 }

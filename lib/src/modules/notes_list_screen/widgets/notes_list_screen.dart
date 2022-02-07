@@ -31,25 +31,37 @@ class NotesListScreen extends StatelessWidget implements AutoRouteWrapper {
                   largeTitle: const Text('Notes'),
                 ),
                 SliverList(
+                    delegate: SliverChildListDelegate(const [
+                  Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: NotesListSeachField(),
+                  ),
+                ])),
+                SliverList(
                   delegate: SliverChildListDelegate(
-                    [
-                      const Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: NotesListSeachField(),
-                      ),
-                      const NotesList(),
-                    ],
+                    const [NotesList()],
                   ),
                 ),
               ],
             ),
-            const Align(
-              alignment: Alignment.bottomCenter,
-              child: NotesCount(),
-            ),
-            const Align(
-              alignment: Alignment.bottomRight,
-              child: AddNoteButton(),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 40,
+              child: Container(
+                color: CupertinoTheme.of(context).scaffoldBackgroundColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    // occupy space to make other two widgets position
+                    // at center and end layout
+                    SizedBox(width: 30),
+                    NotesCount(),
+                    AddNoteButton(),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

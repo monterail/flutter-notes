@@ -34,7 +34,7 @@ class NotesListElement extends StatelessWidget {
         ? contentWithSkippedTitle.toList().sublist(0, 100)
         : contentWithSkippedTitle;
 
-    return String.fromCharCodes(runes);
+    return '...${String.fromCharCodes(runes)}';
   }
 
   String get creationDate {
@@ -49,7 +49,7 @@ class NotesListElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.only(top: 10, bottom: 10, right: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -58,6 +58,8 @@ class NotesListElement extends StatelessWidget {
               style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
             Text(

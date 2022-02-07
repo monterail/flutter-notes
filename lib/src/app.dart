@@ -34,8 +34,8 @@ class NotesApp extends StatelessWidget {
 
         theme: const CupertinoThemeData(
           primaryColor: CupertinoColors.systemYellow,
-          barBackgroundColor: CupertinoColors.extraLightBackgroundGray,
-          scaffoldBackgroundColor: CupertinoColors.extraLightBackgroundGray,
+          barBackgroundColor: CupertinoColors.systemBackground,
+          scaffoldBackgroundColor: CupertinoColors.systemBackground,
         ),
 
         // Use AppLocalizations to configure the correct application title

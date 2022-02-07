@@ -28,3 +28,5 @@ class UpdateContent extends NoteEditEvent {
 class StoreNote extends NoteEditEvent {}
 
 class DeleteNote extends NoteEditEvent {}
+
+class ShareNote extends NoteEditEvent {}

@@ -7,6 +7,7 @@ import 'package:template/src/modules/note_edit_screen/bloc/note_edit_bloc_provid
 import 'package:template/src/modules/note_edit_screen/widgets/widgets/date_header/date_header.dart';
 import 'package:template/src/modules/note_edit_screen/widgets/widgets/delete_button/delete_button.dart';
 import 'package:template/src/modules/note_edit_screen/widgets/widgets/new_button/new_button.dart';
+import 'package:template/src/modules/note_edit_screen/widgets/widgets/share_button/share_button.dart';
 import 'package:template/src/modules/note_edit_screen/widgets/widgets/text_field/text_field.dart';
 
 class NoteEditScreen extends StatelessWidget implements AutoRouteWrapper {
@@ -56,7 +57,7 @@ class NoteEditScreen extends StatelessWidget implements AutoRouteWrapper {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     DeleteNoteButton(),
-                    Icon(CupertinoIcons.share),
+                    ShareNoteButton(),
                     NewNoteButton(),
                   ],
                 ),

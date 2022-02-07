@@ -23,13 +23,15 @@ class NotesList extends StatelessWidget {
             left: 30,
           ),
           decoration: BoxDecoration(
-            color: CupertinoColors.white,
+            color: CupertinoColors.quaternarySystemFill,
             borderRadius: BorderRadius.circular(16),
           ),
           child: ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: state.notes.length,
             itemBuilder: (context, index) => GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTap: () => _handleRedirect(context, state.notes[index].id),
               child: NotesListElement(note: state.notes[index]),
             ),

@@ -10,11 +10,11 @@ class DateHeader extends StatelessWidget {
   Widget build(BuildContext context) =>
       BlocBuilder<NoteEditBloc, NoteEditState>(
         builder: (context, state) => AnimatedSwitcher(
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 100),
           child: Text(
             DateFormat('d MMMM yyyy, hh:mm')
                 .format(state.note?.creation ?? DateTime.now()),
-            key: ValueKey(state.note),
+            key: ValueKey(state.note?.creation),
             textAlign: TextAlign.center,
             style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
                   color: CupertinoColors.inactiveGray,
