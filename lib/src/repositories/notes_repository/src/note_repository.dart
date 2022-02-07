@@ -20,4 +20,7 @@ class NoteRepository extends AbstractNoteRepository with IHiveRepository<Note> {
 
   @override
   Future<int> get count async => (await box).length;
+
+  @override
+  Future<void> delete(int id) async => (await box).delete(id);
 }

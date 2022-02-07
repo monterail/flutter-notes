@@ -8,7 +8,7 @@ abstract class NoteEditEvent extends Equatable {
 }
 
 class LoadNote extends NoteEditEvent {
-  final int noteId;
+  final int? noteId;
 
   const LoadNote(this.noteId);
 
@@ -26,3 +26,5 @@ class UpdateContent extends NoteEditEvent {
 }
 
 class StoreNote extends NoteEditEvent {}
+
+class DeleteNote extends NoteEditEvent {}

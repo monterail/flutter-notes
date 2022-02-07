@@ -10,7 +10,7 @@ class Routes {
   static const notesList = '/';
 
   // Routes with params
-  static String editNote({String? id}) => '/note/$id';
+  static String editNote({int? id}) => '/note/$id';
 }
 
 @AdaptiveAutoRouter(routes: [

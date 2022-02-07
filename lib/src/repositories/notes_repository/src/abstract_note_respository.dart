@@ -5,4 +5,5 @@ abstract class AbstractNoteRepository {
   Future<int> get count;
   Future<Note?> getById(int id);
   Future<void> applyUpdate(Note note);
+  Future<void> delete(int id);
 }

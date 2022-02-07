@@ -7,5 +7,5 @@ Future<void> main() => boot();
 
 Future<void> boot() async {
   await setupHive();
-  runApp(const NotesApp());
+  runApp(NotesApp());
 }

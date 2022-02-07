@@ -17,18 +17,24 @@ class NoteEditBloc extends Bloc<NoteEditEvent, NoteEditState> {
         super(const NoteEditState()) {
     on<LoadNote>(_handleLoadNote);
     on<UpdateContent>(_handleUpdateContent);
-    on<StoreNote>(_handleStoreNote,
-        transformer: throttle(
-          const Duration(seconds: 1),
-          trailing: true,
-        ));
+    on<StoreNote>(
+      _handleStoreNote,
+      transformer: throttle(
+        const Duration(seconds: 1),
+        leading: false,
+        trailing: true,
+      ),
+    );
+    on<DeleteNote>(_handleDeleteNote);
   }
 
   FutureOr<void> _handleLoadNote(
     LoadNote event,
     Emitter<NoteEditState> emit,
   ) async {
-    final note = await _noteRepository.getById(event.noteId);
+    final note = event.noteId != null
+        ? await _noteRepository.getById(event.noteId!)
+        : null;
     emit(state.copyWith(note: note ?? await _buildDefaultNote()));
   }
 
@@ -49,9 +55,19 @@ class NoteEditBloc extends Bloc<NoteEditEvent, NoteEditState> {
     if (state.note == null) {
       return;
     }
-    _noteRepository.applyUpdate(state.note!);
+    await _noteRepository.applyUpdate(state.note!);
+  }
+
+  FutureOr<void> _handleDeleteNote(
+    DeleteNote event,
+    Emitter<NoteEditState> emit,
+  ) async {
+    if (state.note == null) {
+      return;
+    }
+    await _noteRepository.delete(state.note!.id);
   }
 
   Future<Note> _buildDefaultNote() async =>
-      Note(id: await _noteRepository.count);
+      Note(id: await _noteRepository.count, creation: DateTime.now());
 }
