@@ -49,6 +49,7 @@ app.*.map.json
 # Generated Dart source code
 *.g.dart
 *.gr.dart
+*.mocks.dart
 
 # Web deploy
 firebase/public

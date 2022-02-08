@@ -36,6 +36,7 @@ dev_dependencies:
   hive_generator: ^1.1.1
   integration_test:
     sdk: flutter
+  mockito: ^5.0.17
 
 flutter:
   uses-material-design: true

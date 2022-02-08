@@ -16,6 +16,7 @@ class NoteEditBloc extends Bloc<NoteEditEvent, NoteEditState> {
   NoteEditBloc({
     required AbstractNoteRepository noteRepository,
     required ShareService share,
+    Duration minStoreInterval = const Duration(milliseconds: 100),
   })  : _noteRepository = noteRepository,
         _share = share,
         super(const NoteEditState()) {
@@ -24,7 +25,7 @@ class NoteEditBloc extends Bloc<NoteEditEvent, NoteEditState> {
     on<StoreNote>(
       _handleStoreNote,
       transformer: throttle(
-        const Duration(milliseconds: 100),
+        minStoreInterval,
         leading: false,
         trailing: true,
       ),
