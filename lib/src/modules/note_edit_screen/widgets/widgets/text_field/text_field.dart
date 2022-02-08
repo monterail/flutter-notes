@@ -24,24 +24,27 @@ class _NoteTextFieldState extends State<NoteTextField> {
   Widget build(BuildContext context) =>
       BlocListener<NoteEditBloc, NoteEditState>(
         listener: (context, state) {
-          if (_controller.text.isEmpty && state.note != null) {
+          final isNoteEmpty = state.note?.content.isEmpty ?? true;
+          if (_controller.text.isEmpty && !isNoteEmpty) {
             _controller.text = state.note!.content;
             FocusScope.of(context).unfocus();
             return;
           }
-          _focusNode.requestFocus();
-          if (_controller.text.isNotEmpty &&
-              (state.note == null || state.note!.content.isEmpty)) {
+          if (_controller.text.isNotEmpty && isNoteEmpty) {
             _controller.clear();
           }
+          _focusNode.requestFocus();
         },
-        child: CupertinoTextField.borderless(
-          controller: _controller,
-          focusNode: _focusNode,
-          autofocus: true,
-          maxLines: null,
-          onChanged: (content) =>
-              context.read<NoteEditBloc>().add(UpdateContent(content)),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 500),
+          child: CupertinoTextField.borderless(
+            controller: _controller,
+            focusNode: _focusNode,
+            autofocus: true,
+            maxLines: null,
+            onChanged: (content) =>
+                context.read<NoteEditBloc>().add(UpdateContent(content)),
+          ),
         ),
       );
 }

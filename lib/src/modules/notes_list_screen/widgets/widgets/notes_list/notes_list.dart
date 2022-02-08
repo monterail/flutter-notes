@@ -18,12 +18,10 @@ class NotesList extends StatelessWidget {
       BlocBuilder<NotesListBloc, NotesListState>(
         builder: (context, state) => AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          padding: const EdgeInsets.only(
-            left: 30,
-          ),
+          margin: const EdgeInsets.only(left: 16, right: 16, bottom: 40),
+          padding: const EdgeInsets.only(left: 30),
           decoration: BoxDecoration(
-            color: CupertinoColors.quaternarySystemFill,
+            color: CupertinoColors.systemFill,
             borderRadius: BorderRadius.circular(16),
           ),
           child: ListView.separated(

@@ -50,6 +50,7 @@ class NotesListScreen extends StatelessWidget implements AutoRouteWrapper {
               right: 0,
               height: 40,
               child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 color: CupertinoTheme.of(context).scaffoldBackgroundColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

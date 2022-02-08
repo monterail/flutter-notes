@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bloc_event_transformers/bloc_event_transformers.dart';
 import 'package:equatable/equatable.dart';
 import 'package:template/src/repositories/notes_repository/notes_repository.dart';
 import 'package:template/src/services/share.dart';
-import 'package:template/src/utils/bloc/transformers.dart';
 
 part 'note_edit_event.dart';
 part 'note_edit_state.dart';
@@ -24,7 +24,7 @@ class NoteEditBloc extends Bloc<NoteEditEvent, NoteEditState> {
     on<StoreNote>(
       _handleStoreNote,
       transformer: throttle(
-        const Duration(seconds: 1),
+        const Duration(milliseconds: 100),
         leading: false,
         trailing: true,
       ),

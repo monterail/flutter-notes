@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/src/config/routes.dart';
 import 'package:template/src/modules/notes_list_screen/bloc/notes_list_bloc.dart';
+import 'package:template/src/utils/widgets/cupertino_icon_button.dart';
 
 class AddNoteButton extends StatelessWidget {
   const AddNoteButton({Key? key}) : super(key: key);
@@ -13,11 +14,8 @@ class AddNoteButton extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context) => CupertinoIconButton(
         onTap: () => _handleRedirect(context),
-        child: const Padding(
-          padding: EdgeInsets.only(right: 16),
-          child: Icon(CupertinoIcons.add),
-        ),
+        icon: const Icon(CupertinoIcons.add),
       );
 }

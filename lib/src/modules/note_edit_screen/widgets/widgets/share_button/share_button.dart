@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/src/modules/note_edit_screen/bloc/note_edit_bloc.dart';
+import 'package:template/src/utils/widgets/cupertino_icon_button.dart';
 
 class ShareNoteButton extends StatelessWidget {
   const ShareNoteButton({Key? key}) : super(key: key);
@@ -10,8 +11,8 @@ class ShareNoteButton extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context) => CupertinoIconButton(
         onTap: () => _handleTap(context),
-        child: const Icon(CupertinoIcons.share),
+        icon: const Icon(CupertinoIcons.share),
       );
 }

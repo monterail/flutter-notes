@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:template/src/config/routes.dart';
+import 'package:template/src/utils/widgets/cupertino_icon_button.dart';
 
 class NewNoteButton extends StatelessWidget {
   const NewNoteButton({Key? key}) : super(key: key);
@@ -10,8 +11,8 @@ class NewNoteButton extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context) => CupertinoIconButton(
         onTap: () => _handleTap(context),
-        child: const Icon(CupertinoIcons.add),
+        icon: const Icon(CupertinoIcons.add),
       );
 }
